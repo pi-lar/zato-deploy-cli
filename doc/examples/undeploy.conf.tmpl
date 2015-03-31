@@ -1,0 +1,21 @@
+[include]
+# List of configuration files to include
+# Each option names a file to include (the path is relative to this file).
+# The value of the option is a comma-separetd list of sections to
+# read from the included file and add to this configuration.
+#
+# An empty setting reads/includes all sections from the included file.
+# Recursive inclusion is not supported yet.
+#
+deploy.conf: zato
+
+[mytarget1]
+# Comma-separated list of service name patterns
+#
+# Every service with a name matching one of the patterns will be deleted from
+# the Zato cluster when the script 'deleteservices.py' is called, which uses
+# the 'undeploy.conf' file as its configuration.
+#
+# All incoming channels referrring to a deleted service will be deleted by
+# Zato as well!
+services: myservice.example-service

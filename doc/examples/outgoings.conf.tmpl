@@ -1,0 +1,52 @@
+# Definitions of outgoings for external plain HTTP and SOAP services
+
+# Example of service called via plain HTTP
+
+[myhttpconn]
+# The section name is arbitrary and can be referenced in the 'channels'
+# settings in deployment target sections in 'deploy.conf'
+
+# the name will be used as the outgoing identifier in Zato
+name: Service Config Outgoing Example HTTP
+# implied, when given must be 'outgoing'
+;connection: outgoing
+transport: plain_http
+url_path: /serviceconfig/http/example
+host: http://10.152.11.182:9093
+# HTTP method used for outgoing request
+# defaults to HEAD
+ping_method: GET
+# max size of pool of connections to keep for this outgoing
+# defaults to 200
+pool_size: 90
+# How long to wait for response from external server in seconds
+# Must be an integer, defaults to 10
+timeout: 10
+# optional, defaults to open
+# may be a (unique substring of a) name of an existing security definition
+# or the numeric ID of one
+security_id: pubapi
+# optional, defaults to true
+;is_active: true
+# optional, defaults to false
+;is_internal: false
+
+# Example of service called via SOAP
+
+[mysoapconn]
+# The section name is arbitrary and can be referenced in the 'channels'
+# settings in deployment target sections in 'deploy.conf'
+
+# the name will be used as the outgoing identifier in Zato
+name: Service Config Outgoing Example SOAP
+transport: soap
+host: http://localhost:11223
+url_path: /myservice/soap/example
+soap_action: example
+# optional, may be '1.2' or '1.1', defaults to '1.1'
+;soap_version: 1.1
+;ping_method: HEAD
+;pool_size: 200
+;timout: 10
+;is_active: true
+;is_internal: false

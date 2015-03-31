@@ -1,0 +1,8 @@
+# Dependencies for zatodeploy.deploy
+# Zato as a whole isn't pip/easy-installable
+# but we can install the client part.
+zato-common>=2.0.3.5
+zato-client>=2.0.3.5
+redis
+sqlalchemy
+bunch

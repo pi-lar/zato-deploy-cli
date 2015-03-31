@@ -1,0 +1,46 @@
+# Definitions of incoming channels exposed via plain HTTP or SOAP
+
+# Example of service exposed via plain HTTP
+
+[myhttpchannel]
+# The section name is arbitrary and can be referenced in the 'channels'
+# settings in deployment target sections in 'deploy.conf'
+
+# the name will be used as the channel identifier in Zato
+name: Service Config Channel Example HTTP
+# implied, when given must be 'channel'
+;connection: channel
+transport: plain_http
+service: myservice.example-service
+url_path: /myservice/http/example
+# must be 'json', 'xml', or empty
+data_format: json
+# optional, defaults to open
+# may be a (substring of a) name of an existing security definition
+# or the numeric ID of one
+security_id: pubapi
+# optional, defaults to true
+;is_active: true
+# optional, defaults to false
+;is_internal: false
+
+
+# Example of service exposed via SOAP
+
+[mysoapchannel]
+# The section name is arbitrary and can be referenced in the 'channels'
+# settings in deployment target sections in 'deploy.conf'
+
+# the name will be used as the channel identifier in Zato
+name: Service Config Channel Example SOAP
+transport: soap
+service: myservice.example-service
+url_path: /myservice/soap/example
+soap_action: example
+security_id: pubapi
+# optional, must be '1.1' when given
+;soap_version: 1.1
+# optional, but when given must be 'xml' if transport is 'soap'
+;data_format: xml
+;is_active: true
+;is_internal: false

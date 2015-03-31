@@ -1,0 +1,72 @@
+[zato]
+# Section with general overall settings for the deployment
+
+# Redis DB server hostname/IP address
+kvdb_host: localhost
+# ... and port
+kvdb_port: 6379
+# database defaults to 0
+;kvdb_db: 0
+# database password is optional
+;kvdb_password =
+# ID of cluster definition in object database
+cluster: 1
+# load balancer server hostname/IP address
+lb_host: 127.0.0.1
+# ... and port
+lb_port: 11223
+# Base URL for calls to zato public API
+service_url: http://%(lb_host)s:%(lb_port)s
+# HTTP basic auth user for zato public API
+http_user: pubapi
+# ... and password
+http_password: XXXXXX
+
+# Settings below in this section not used atm
+# Object DB (PostgreSQL) server hostname/IP address
+odb_host: localhost
+# ... and port
+odb_port: 5432
+# Object DB schema (may be empty)
+odb_schema =
+# and database name
+odb_database: zato1
+# Username to use to connect to object DB
+odb_user: zato1
+# ... and password
+odb_password: zato1
+
+# All sections other than the one named 'zato' above define deployment targets,
+# the name of the section / deployment target is arbitrary.
+# When running the deployment script, you can specify which deployment targets
+# you want to deploy to, by listing the section names on the command line.
+
+[mytarget1]
+
+# Comma-separated list of paths or path patterns of service modules to upload
+# for this deployment target. Each list entry may also be a shell glob patterns
+# defining a dynamic list of modules files. If a path does not start with a
+# slash ('/') it is relative to the working directory of the deployment script.
+modules: myservice.py
+
+# Comma-separated list of channels to create/update for this deployment target.
+# Channels are created/updated in the order listed.
+# The names refer to the names of the sections in the channels definition file
+# (default name 'channels.conf'), in which the channels' settings are defined.
+# May be specified as a single '*', which stands for all defined channels in
+# undefined order.
+channels: myhttpchannel, mysoapchannel
+
+# Comma-separated list of outgoings to create/update for this deployment target.
+# Outgoings are created/updated in the order listed.
+# The names refer to the names of the sections in the outgoings definition file
+# (default name 'outgoings.conf'), in which the outgoings' settings are defined.
+# May be specified as a single '*', which stands for all defined outgoings in
+# undefined order.
+outgoings: myhttpconn, mysoapconn
+
+# Path of JSON file containing configuration settings for service to be written
+# into Redis DB. If not given or empty, a default file 'settings.conf' is used.
+# The default file may be missing, but if the setting is non-empty, the file
+# must exist.
+settings: settings.conf
