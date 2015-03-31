@@ -110,7 +110,7 @@ def main(args=None):
                 try:
                     urn, settings = read_settings(settings_fn)
                 except Exception as exc:
-                    msg = "Could not load settings: %s" %  exc
+                    msg = "Could not load settings: %s" % exc
                     log.error(msg)
                     return(msg)
             else:
@@ -121,7 +121,7 @@ def main(args=None):
             try:
                 urn, settings = read_settings('settings.conf')
             except Exception as exc:
-                msg = "Could not load settings: %s" %  exc
+                msg = "Could not load settings: %s" % exc
                 log.error(msg)
                 return(msg)
         else:

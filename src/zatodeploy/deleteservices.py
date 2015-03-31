@@ -43,8 +43,7 @@ import sys
 
 # do not use relative import here, because this module should be executable
 # as a command line script
-from zatodeploy.common import (get_service_list, json_call,
-                                      read_ini_config)
+from zatodeploy.common import (get_service_list, json_call, read_ini_config)
 
 
 log = logging.getLogger(__name__)

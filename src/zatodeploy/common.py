@@ -198,6 +198,7 @@ def _read_includes(cp):
 
     cp.remove_section('include')
 
+
 def read_ini_config(filename):
     """Read INI config from given filename and return it as a nested dict."""
     if not exists(filename):
