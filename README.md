@@ -54,3 +54,6 @@ Script: storesettingss.py
 Usage: zato-storesettings
 Configuration: deploy.conf, settings.conf
 Purpose: creates/updates Zato service configuration settings in Redis DB
+
+
+Published under the MIT license, see LICENSE.txt for details
